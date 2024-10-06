@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "Pokédex",
+    "description": "A simple Pokédex app"
+  },
   "Home": {
     "title": "Pokédex"
   },
