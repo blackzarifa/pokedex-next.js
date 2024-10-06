@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { Button } from '@/components/ui/button';
+import { ModeToggle } from '@/components/theme-toggle';
 
 export default function Home() {
   const t = useTranslations('Home');
@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <h1>{t('title')}</h1>
-      <Button>Test!</Button>
+      <ModeToggle />
     </div>
   );
 }

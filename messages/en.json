@@ -1,5 +1,10 @@
 {
   "Home": {
     "title": "Pokédex"
+  },
+  "Options": {
+    "theme-dark": "Dark",
+    "theme-light": "Light",
+    "theme-system": "System"
   }
 }
