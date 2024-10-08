@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "title": "Pokédex",
+    "description": "Um simples app de Pokédex"
+  },
+  "Home": {
+    "title": "Pokédex"
+  },
+  "Options": {
+    "theme-dark": "Escuro",
+    "theme-light": "Claro",
+    "theme-system": "Sistema",
+    "switch-language": "Alterar Idioma"
+  }
+}

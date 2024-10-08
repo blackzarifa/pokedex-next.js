@@ -9,6 +9,7 @@
   "Options": {
     "theme-dark": "Dark",
     "theme-light": "Light",
-    "theme-system": "System"
+    "theme-system": "System",
+    "switch-language": "Switch Language"
   }
 }
