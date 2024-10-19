@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import PokedexSearch from '@/components/pokedex-search';
 
 export default function Home() {
   const t = useTranslations('Home');
@@ -7,12 +8,12 @@ export default function Home() {
 
   return (
     <>
+      <PokedexSearch />
       <div>
         {arr.map((x) => (
           <h1>{x}</h1>
         ))}
       </div>
-
       <h1>{t('title')}</h1>
     </>
   );

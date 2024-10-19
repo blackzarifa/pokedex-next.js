@@ -7,6 +7,8 @@
     "title": "Pokédex"
   },
   "Options": {
+    "search": "Buscar",
+    "search-placeholder": "Buscar Pokémon...",
     "theme-dark": "Escuro",
     "theme-light": "Claro",
     "theme-system": "Sistema",

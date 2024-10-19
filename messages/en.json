@@ -7,6 +7,8 @@
     "title": "Pokédex"
   },
   "Options": {
+    "search": "Search",
+    "search-placeholder": "Search Pokémon...",
     "theme-dark": "Dark",
     "theme-light": "Light",
     "theme-system": "System",
