@@ -14,8 +14,14 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
   const t = useTranslations('Options');
+
+  const themes = [
+    { set: () => setTheme('system'), title: t('theme-system') },
+    { set: () => setTheme('light'), title: t('theme-light') },
+    { set: () => setTheme('dark'), title: t('theme-dark') },
+  ];
 
   return (
     <DropdownMenu>
@@ -26,11 +32,16 @@ export function ModeToggle() {
           <span className="sr-only">{t('switch-theme')}</span>
         </Button>
       </DropdownMenuTrigger>
-
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>{t('theme-light')}</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>{t('theme-dark')}</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>{t('theme-system')}</DropdownMenuItem>
+        {themes.map((item) => (
+          <DropdownMenuItem
+            key={item.title}
+            onClick={item.set}
+            className={item.title.toLowerCase() === theme ? 'bg-accent' : ''}
+          >
+            {item.title}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
