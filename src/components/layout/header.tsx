@@ -9,7 +9,7 @@ export function Header() {
   const t = useTranslations('Home');
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 mb-6">
       <div className="flex h-14 w-full items-center px-4">
         <h1 className="text-xl font-bold">{t('title')}</h1>
 
