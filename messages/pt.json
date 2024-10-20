@@ -14,5 +14,10 @@
     "theme-system": "Sistema",
     "switch-theme": "Alterar Tema",
     "switch-language": "Alterar Idioma"
+  },
+  "NotFound": {
+    "heading": "404 Página Não Encontrada",
+    "text": "Não foi possível encontrar a página solicitada",
+    "returnBtn": "Retornar ao Pokédex"
   }
 }
