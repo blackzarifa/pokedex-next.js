@@ -19,5 +19,9 @@
     "heading": "404 Página Não Encontrada",
     "text": "Não foi possível encontrar a página solicitada",
     "returnBtn": "Retornar ao Pokédex"
+  },
+  "Fetch": {
+    "loading": "Carregando...",
+    "error": "Ocorreu um erro:"
   }
 }

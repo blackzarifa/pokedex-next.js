@@ -19,5 +19,9 @@
     "heading": "404 Page Not Found",
     "text": "Could not find requested resource",
     "returnBtn": "Return to Pokédex"
+  },
+  "Fetch": {
+    "loading": "Loading...",
+    "error": "An error occurred:"
   }
 }
