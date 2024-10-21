@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchPokemonList } from '@/api/pokemon';
+import { fetchPokemonList } from '@/app/api/pokemon';
 import { Pokemon } from '@/types/pokemon';
 import { useTranslations } from 'next-intl';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
