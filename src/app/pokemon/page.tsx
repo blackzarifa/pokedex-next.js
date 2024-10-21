@@ -1,12 +1,18 @@
+'use client';
+
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/lib/react-query/queryClient';
 import PokedexSearch from '@/components/pokedex-search';
 import PokemonList from '@/components/pokemon-list';
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center gap-8">
-      <PokedexSearch />
+      <QueryClientProvider client={queryClient}>
+        <PokedexSearch />
 
-      <PokemonList />
+        <PokemonList />
+      </QueryClientProvider>
     </div>
   );
 }

@@ -1,24 +1,36 @@
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { fetchPokemonList } from '@/api/pokemon';
+import { Pokemon } from '@/types/pokemon';
+import { useTranslations } from 'next-intl';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-const mockPokemon = [
-  { id: 1, name: 'Bulbasaur', type: 'Grass' },
-  { id: 4, name: 'Charmander', type: 'Fire' },
-  { id: 7, name: 'Squirtle', type: 'Water' },
-  { id: 25, name: 'Pikachu', type: 'Electric' },
-];
-
 export default function PokemonList() {
+  const t = useTranslations('Fetch');
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['pokemonList'],
+    queryFn: () => fetchPokemonList(),
+  });
+
+  if (isLoading) return <h1>{t('loading')}</h1>;
+  if (error)
+    return (
+      <h1>
+        {t('error')} {error.message}
+      </h1>
+    );
+
   return (
     <div className="container">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {mockPokemon.map((pokemon) => (
-          <Card key={pokemon.id}>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+        {data?.results.map((pokemon: Pokemon) => (
+          <Card key={pokemon.name}>
             <CardHeader>
               <CardTitle>{pokemon.name}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Type: {pokemon.type}</p>
-              <p>ID: {pokemon.id}</p>
+              <p>test!</p>
             </CardContent>
           </Card>
         ))}
