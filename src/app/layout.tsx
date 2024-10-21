@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             disableTransitionOnChange
           >
             <Header />
-            {children}
+            <div className="mx-4">{children}</div>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
