@@ -8,13 +8,14 @@ import { Button } from '@/components/ui/button';
 
 export default function PokemonList() {
   const t = useTranslations('Fetch');
+  const PAGE_SIZE = 20;
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } =
     useInfiniteQuery<PokemonListResponse, Error>({
       queryKey: ['infinitePokemon'],
-      queryFn: ({ pageParam = 0 }) => fetchPokemonList(20, pageParam),
+      queryFn: ({ pageParam = 0 }) => fetchPokemonList(PAGE_SIZE, pageParam),
       getNextPageParam: (lastPage, pages) => {
-        if (lastPage.next) return pages.length * 20;
+        if (lastPage.next) return pages.length * PAGE_SIZE;
         return undefined;
       },
       initialPageParam: 0,
