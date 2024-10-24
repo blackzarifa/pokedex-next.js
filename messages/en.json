@@ -22,6 +22,9 @@
   },
   "Fetch": {
     "loading": "Loading...",
-    "error": "An error occurred:"
+    "error": "An error occurred:",
+    "loadMore": "Load more",
+    "loadingMore": "Loading more...",
+    "noMoreToLoad": "No more to load."
   }
 }
