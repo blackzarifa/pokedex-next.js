@@ -1,49 +1,16 @@
 import React from 'react';
-import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
-import { fetchPokemonList, fetchPokemonDetails } from '@/app/api/pokemon';
-import { Pokemon, PokemonListResponse, PokemonDetails } from '@/types/pokemon';
+import { Pokemon } from '@/types/pokemon';
 import { useTranslations } from 'next-intl';
+import { useInfinitePokemonQuery } from '@/lib/hooks/use-pokemon-queries';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { TYPE_COLORS } from '@/lib/constants';
 
 export default function PokemonList() {
-  const queryClient = useQueryClient();
   const t = useTranslations('Fetch');
-  const PAGE_SIZE = 20;
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } =
-    useInfiniteQuery<PokemonListResponse, Error>({
-      queryKey: ['infinitePokemon'],
-      queryFn: async ({ pageParam = 0 }) => {
-        const list = await fetchPokemonList(PAGE_SIZE, pageParam);
-
-        const pokemonWithDetails = await Promise.all(
-          list.results.map(async (pokemon) => {
-            const cacheKey = ['pokemon', 'details', pokemon.url];
-            const cachedData = queryClient.getQueryData<PokemonDetails>(cacheKey);
-            if (cachedData) return cachedData;
-
-            const details = await fetchPokemonDetails(pokemon.url);
-
-            queryClient.setQueryData(cacheKey, details, {
-              staleTime: 1000 * 60 * 60 * 24,
-              gcTime: 1000 * 60 * 60 * 24 * 7,
-            });
-
-            return details;
-          })
-        );
-        return { ...list, pokemonWithDetails };
-      },
-      getNextPageParam: (lastPage, pages) => {
-        if (lastPage.next) return pages.length * PAGE_SIZE;
-        return undefined;
-      },
-      initialPageParam: 0,
-      staleTime: 1000 * 60 * 60,
-      gcTime: 1000 * 60 * 60 * 24,
-    });
+    useInfinitePokemonQuery();
 
   if (isLoading) return <h1>{t('loading')}</h1>;
   if (error)
