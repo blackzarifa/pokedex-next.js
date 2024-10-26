@@ -45,7 +45,7 @@ export const useInfinitePokemonQuery = () => {
 
       return {
         ...list,
-        pokemonWithDetails: pokemonWithDetails.filter(Boolean),
+        pokemonWithDetails: pokemonWithDetails.filter(Boolean) as PokemonDetails[],
       };
     },
     getNextPageParam: (lastPage, pages) => {

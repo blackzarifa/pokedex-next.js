@@ -8,7 +8,7 @@ export interface PokemonListResponse {
   next: string | null;
   previous: string | null;
   results: Pokemon[];
-  pokemonWithDetails?: (PokemonDetails | null)[];
+  pokemonWithDetails?: PokemonDetails[];
 }
 
 export interface PokemonDetails {
