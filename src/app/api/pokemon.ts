@@ -4,8 +4,13 @@ import Bottleneck from 'bottleneck';
 const API_BASE_URL = 'https://pokeapi.co/api/v2';
 
 const limiter = new Bottleneck({
-  minTime: 600,
-  maxConcurrent: 1,
+  reservoir: 100,
+  reservoirRefreshAmount: 100,
+  reservoirRefreshInterval: 60 * 1000,
+  maxConcurrent: 10,
+});
+limiter.on('failed', async (error, jobInfo) => {
+  console.warn(`Job ${jobInfo.options.id} failed: ${error}`);
 });
 
 export async function fetchPokemonList(
