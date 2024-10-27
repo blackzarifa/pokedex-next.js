@@ -4,12 +4,18 @@ import { CardHeader } from '@/components/ui/card';
 import { CardTitle } from '@/components/ui/card';
 import { CardDescription } from '@/components/ui/card';
 import { CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { TYPE_COLORS } from '@/lib/constants';
+import { PokemonTypeName } from '@/types/pokemon';
 import PokemonTypeBadge from '@/components/pokemon/pokemon-type-badge';
 import Image from 'next/image';
 
 export default function PokemonCard({ pokemon }: { pokemon: PokemonDetails }) {
+  const mainType = pokemon.types[0].type.name as PokemonTypeName;
+  const hoverShadow = `hover:shadow-${TYPE_COLORS[mainType]}/20`;
+
   return (
-    <Card className="hover:shadow-lg transition-shadow">
+    <Card className={cn('hover:shadow-lg transition-shadow', hoverShadow)}>
       <div className="grid grid-row-1 grid-cols-3 gap-2 h-full">
         <div className="col-span-1 flex content-center justify-center p-2">
           <div className="col-span-1 relative aspect-square">
