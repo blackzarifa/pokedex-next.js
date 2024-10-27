@@ -4,21 +4,22 @@ import { CardHeader } from '@/components/ui/card';
 import { CardTitle } from '@/components/ui/card';
 import { CardDescription } from '@/components/ui/card';
 import { CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import PokemonTypeBadge from '@/components/pokemon/pokemon-type-badge';
 import Image from 'next/image';
-import { TYPE_COLORS } from '@/lib/constants';
 
 export default function PokemonCard({ pokemon }: { pokemon: PokemonDetails }) {
   return (
     <Card className="hover:shadow-lg transition-shadow">
       <div className="grid grid-row-1 grid-cols-3 gap-2 h-full">
         <div className="col-span-1 flex content-center justify-center p-2">
-          <Image
-            src={pokemon.sprites.other['official-artwork'].front_default}
-            alt={pokemon.name}
-            width={120}
-            height={120}
-          ></Image>
+          <div className="col-span-1 relative aspect-square">
+            <Image
+              src={pokemon.sprites.other['official-artwork'].front_default}
+              alt={pokemon.name}
+              fill
+              className="object-contain p-3"
+            />
+          </div>
         </div>
 
         <div className="col-span-2">
@@ -30,9 +31,7 @@ export default function PokemonCard({ pokemon }: { pokemon: PokemonDetails }) {
           <CardContent className="pl-2">
             <div className="flex flex-wrap gap-2">
               {pokemon.types.map(({ type }) => (
-                <Badge key={type.name} className="capitalize">
-                  {type.name}
-                </Badge>
+                <PokemonTypeBadge key={type.name} type={type.name} />
               ))}
             </div>
           </CardContent>
