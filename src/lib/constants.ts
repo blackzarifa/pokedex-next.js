@@ -1,4 +1,6 @@
-export const TYPE_COLORS = {
+import { PokemonTypeName } from '@/types/pokemon';
+
+export const TYPE_COLORS: Record<PokemonTypeName, string> = {
   normal: 'bg-gray-400',
   fire: 'bg-red-500',
   water: 'bg-blue-500',

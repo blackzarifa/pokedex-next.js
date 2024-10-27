@@ -22,9 +22,29 @@ export interface PokemonDetails {
 }
 
 interface PokemonType {
-  name: string;
+  name: PokemonTypeName;
   url: string;
 }
+
+export type PokemonTypeName =
+  | 'normal'
+  | 'fire'
+  | 'water'
+  | 'electric'
+  | 'grass'
+  | 'ice'
+  | 'fighting'
+  | 'poison'
+  | 'ground'
+  | 'flying'
+  | 'psychic'
+  | 'bug'
+  | 'rock'
+  | 'ghost'
+  | 'dragon'
+  | 'dark'
+  | 'steel'
+  | 'fairy';
 
 interface PokemonSprites {
   front_default: string;
