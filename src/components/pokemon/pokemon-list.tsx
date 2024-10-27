@@ -1,5 +1,4 @@
 import React from 'react';
-import { PokemonDetails } from '@/types/pokemon';
 import { useTranslations } from 'next-intl';
 import { useInfinitePokemonQuery } from '@/lib/hooks/use-pokemon-queries';
 import { Button } from '@/components/ui/button';
@@ -32,7 +31,7 @@ export default function PokemonList() {
               ))
           : data?.pages.map((page, pageIndex) => (
               <React.Fragment key={pageIndex}>
-                {page.pokemonWithDetails?.map((pokemon: PokemonDetails) => (
+                {page.pokemonWithDetails?.map((pokemon) => (
                   <PokemonCard key={pokemon.name} pokemon={pokemon} />
                 ))}
               </React.Fragment>
@@ -42,7 +41,8 @@ export default function PokemonList() {
       <Button
         onClick={() => fetchNextPage()}
         disabled={!hasNextPage || isFetchingNextPage}
-        className="my-6 mx-auto disabled:bg-gray-300 disabled:text-gray-600"
+        className="my-6 mx-auto"
+        variant={hasNextPage ? 'default' : 'secondary'}
       >
         {isFetchingNextPage ? t('loadingMore') : hasNextPage ? t('loadMore') : t('noMoreToLoad')}
       </Button>
