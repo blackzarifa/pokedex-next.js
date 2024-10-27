@@ -17,6 +17,8 @@ export default function PokemonCard({ pokemon }: { pokemon: PokemonDetails }) {
               src={pokemon.sprites.other['official-artwork'].front_default}
               alt={pokemon.name}
               fill
+              sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 20vw"
+              priority={false}
               className="object-contain p-3"
             />
           </div>
