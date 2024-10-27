@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { PokemonTypeName } from '@/types/pokemon';
 
 export default function PokemonTypeBadge({ type }: { type: PokemonTypeName }) {
-  const backgroundColor = TYPE_COLORS[type] || 'bg-gray-400';
+  const backgroundColor = `bg-${TYPE_COLORS[type]}` || 'bg-gray-400';
 
   return <Badge className={cn('capitalize', backgroundColor)}>{type}</Badge>;
 }
