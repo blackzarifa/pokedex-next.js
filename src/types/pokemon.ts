@@ -17,7 +17,7 @@ export interface PokemonDetails {
   types: {
     slot: number;
     type: PokemonType;
-  };
+  }[];
   sprites: PokemonSprites;
 }
 
