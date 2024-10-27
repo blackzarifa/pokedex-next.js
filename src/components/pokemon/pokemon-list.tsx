@@ -3,6 +3,7 @@ import { PokemonDetails } from '@/types/pokemon';
 import { useTranslations } from 'next-intl';
 import { useInfinitePokemonQuery } from '@/lib/hooks/use-pokemon-queries';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import PokemonCard from '@/components/pokemon/pokemon-card';
 
 export default function PokemonList() {
@@ -11,10 +12,9 @@ export default function PokemonList() {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } =
     useInfinitePokemonQuery();
 
-  if (isLoading) return <h1>{t('loading')}</h1>;
   if (error)
     return (
-      <h1>
+      <h1 className="text-xl text-red-800">
         {t('error')} {error.message}
       </h1>
     );
@@ -22,13 +22,21 @@ export default function PokemonList() {
   return (
     <div className="container flex flex-col justify-center">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
-        {data?.pages.map((page, pageIndex) => (
-          <React.Fragment key={pageIndex}>
-            {page.pokemonWithDetails?.map((pokemon: PokemonDetails) => (
-              <PokemonCard key={pokemon.name} pokemon={pokemon} />
+        {isLoading
+          ? Array(8)
+              .fill(0)
+              .map((_, index) => (
+                <div key={index} className="h-36">
+                  <Skeleton className="w-full h-full" />
+                </div>
+              ))
+          : data?.pages.map((page, pageIndex) => (
+              <React.Fragment key={pageIndex}>
+                {page.pokemonWithDetails?.map((pokemon: PokemonDetails) => (
+                  <PokemonCard key={pokemon.name} pokemon={pokemon} />
+                ))}
+              </React.Fragment>
             ))}
-          </React.Fragment>
-        ))}
       </div>
 
       <Button
