@@ -3,8 +3,8 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { queryClient } from '@/lib/react-query/queryClient';
-import PokedexSearch from '@/components/pokemon/pokedex-search';
-import PokemonList from '@/components/pokemon/pokemon-list';
+import PokedexSearch from '@/components/pokemon-home/pokedex-search';
+import PokemonList from '@/components/pokemon-home/pokemon-list';
 
 export default function Home() {
   return (

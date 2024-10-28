@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import { cn } from '@/lib/utils';
 import { TYPE_COLORS } from '@/lib/constants';
 import { PokemonTypeName } from '@/types/pokemon';
-import PokemonTypeBadge from '@/components/pokemon/pokemon-type-badge';
+import PokemonTypeBadge from '@/components/pokemon-home/pokemon-type-badge';
 import Image from 'next/image';
 import { useState } from 'react';
 

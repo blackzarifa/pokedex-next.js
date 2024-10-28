@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { useInfinitePokemonQuery } from '@/lib/hooks/use-pokemon-queries';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import PokemonCard from '@/components/pokemon/pokemon-card';
+import PokemonCard from '@/components/pokemon-home/pokemon-card';
 
 export default function PokemonList() {
   const t = useTranslations('Fetch');
