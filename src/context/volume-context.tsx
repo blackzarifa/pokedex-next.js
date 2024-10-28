@@ -14,7 +14,7 @@ interface VolumeProviderProps {
 }
 
 export function VolumeProvider({ children }: VolumeProviderProps) {
-  const [volume, setVolume] = useState<number>(0.5);
+  const [volume, setVolume] = useState<number>(0.1);
 
   return <VolumeContext.Provider value={{ volume, setVolume }}>{children}</VolumeContext.Provider>;
 }
