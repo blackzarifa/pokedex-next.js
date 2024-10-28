@@ -29,3 +29,11 @@ export async function fetchPokemonDetails(url: string): Promise<PokemonDetails> 
   if (!response.ok) throw new Error('Failed to fetch Pokémon details');
   return response.json();
 }
+
+export async function fetchPokemonByName(name: string): Promise<PokemonDetails> {
+  const response = await limiter.schedule(() =>
+    fetch(`${API_BASE_URL}/pokemon/${name.toLowerCase()}`)
+  );
+  if (!response.ok) throw new Error('Pokemon not found');
+  return response.json();
+}

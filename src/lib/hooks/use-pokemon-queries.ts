@@ -1,5 +1,5 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from '@tanstack/react-query';
-import { fetchPokemonList, fetchPokemonDetails } from '@/app/api/pokemon';
+import { fetchPokemonList, fetchPokemonDetails, fetchPokemonByName } from '@/app/api/pokemon';
 import type { PokemonListResponse, PokemonDetails } from '@/types/pokemon';
 
 const PAGE_SIZE = 20;
@@ -14,12 +14,33 @@ const DETAILS_CACHE_TIME = {
   gcTime: 1000 * 60 * 60 * 24 * 7, // 7 days
 };
 
-export const useInfinitePokemonQuery = () => {
+export const useInfinitePokemonQuery = (search?: string) => {
   const queryClient = useQueryClient();
 
   return useInfiniteQuery<PokemonListResponse, Error>({
-    queryKey: ['infinitePokemon'],
+    queryKey: ['infinitePokemon', search],
     queryFn: async ({ pageParam = 0 }) => {
+      if (search) {
+        try {
+          const pokemon = await fetchPokemonByName(search);
+          return {
+            count: 1,
+            next: null,
+            previous: null,
+            results: [],
+            pokemonWithDetails: [pokemon],
+          };
+        } catch {
+          return {
+            count: 0,
+            next: null,
+            previous: null,
+            results: [],
+            pokemonWithDetails: [],
+          };
+        }
+      }
+
       const list = await fetchPokemonList(PAGE_SIZE, pageParam);
 
       const pokemonWithDetails = await Promise.all(

@@ -5,11 +5,15 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import PokemonCard from '@/components/pokemon-home/pokemon-card';
 
-export default function PokemonList() {
+interface PokemonListProps {
+  searchQuery: string;
+}
+
+export default function PokemonList({ searchQuery }: PokemonListProps) {
   const t = useTranslations('Fetch');
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } =
-    useInfinitePokemonQuery();
+    useInfinitePokemonQuery(searchQuery);
 
   if (error)
     return (
