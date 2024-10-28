@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages, getTranslations } from 'next-intl/server';
-import { ThemeProvider } from '@/components/theme-provider';
 import { Outfit } from 'next/font/google';
 import { Header } from '@/components/layout/header';
-import { VolumeProvider } from '@/context/volume-context';
+import Providers from '@/app/providers';
 
 import './globals.css';
 
@@ -29,19 +27,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang={locale}>
       <body className={`${outfit.variable} font-sans antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <VolumeProvider>
-              <Header />
-              <div className="mx-4">{children}</div>
-            </VolumeProvider>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <Providers locale={locale} messages={messages}>
+          <Header />
+          <div className="mx-4">{children}</div>
+        </Providers>
       </body>
     </html>
   );

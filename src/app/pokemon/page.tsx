@@ -12,12 +12,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center gap-8">
-      <QueryClientProvider client={queryClient}>
-        <PokedexSearch onSearch={setSearchQuery} />
-        <FloatingSearch onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+      <PokedexSearch onSearch={setSearchQuery} />
+      <FloatingSearch onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
 
-        <PokemonList searchQuery={searchQuery} />
-      </QueryClientProvider>
+      <PokemonList searchQuery={searchQuery} />
     </div>
   );
 }
