@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { ModeToggle } from '@/components/theme-toggle';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { Separator } from '@/components/ui/separator';
+import VolumeControl from '@/components/volume-control';
 
 export function Header() {
   const t = useTranslations('Home');
@@ -15,6 +16,7 @@ export function Header() {
 
         <div className="flex flex-1 justify-end">
           <nav className="space-x-2">
+            <VolumeControl />
             <ModeToggle />
             <LanguageSwitcher />
           </nav>

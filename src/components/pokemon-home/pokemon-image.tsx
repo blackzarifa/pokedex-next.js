@@ -1,23 +1,24 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { useVolume } from '@/context/volume-context';
 
 interface PokemonImageProps {
   src: string;
   cry: string;
   alt: string;
   isAnimating: boolean;
-  volume?: number;
 }
 
-export default function PokemonImage({ src, cry, alt, isAnimating, volume }: PokemonImageProps) {
+export default function PokemonImage({ src, cry, alt, isAnimating }: PokemonImageProps) {
   const [isAnimatingInternal, setIsAnimatingInternal] = useState(false);
+  const { volume } = useVolume();
 
   const handleHover = () => {
     setIsAnimatingInternal(true);
 
     const audio = new Audio(cry);
-    audio.volume = volume || 0.1;
+    audio.volume = volume;
     audio.play();
 
     setTimeout(() => setIsAnimatingInternal(false), 600);

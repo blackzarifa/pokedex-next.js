@@ -4,6 +4,7 @@ import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Outfit } from 'next/font/google';
 import { Header } from '@/components/layout/header';
+import { VolumeProvider } from '@/context/volume-context';
 
 import './globals.css';
 
@@ -35,8 +36,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             enableSystem
             disableTransitionOnChange
           >
-            <Header />
-            <div className="mx-4">{children}</div>
+            <VolumeProvider>
+              <Header />
+              <div className="mx-4">{children}</div>
+            </VolumeProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
