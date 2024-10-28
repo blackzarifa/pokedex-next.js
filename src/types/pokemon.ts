@@ -14,6 +14,10 @@ export interface PokemonListResponse {
 export interface PokemonDetails {
   id: number;
   name: string;
+  cries: {
+    latest: string;
+    legacy: string;
+  };
   types: {
     slot: number;
     type: PokemonType;
