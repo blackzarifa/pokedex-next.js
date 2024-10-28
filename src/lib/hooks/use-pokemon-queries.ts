@@ -1,5 +1,10 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from '@tanstack/react-query';
-import { fetchPokemonList, fetchPokemonDetails, fetchPokemonByName } from '@/app/api/pokemon';
+import {
+  fetchPokemonList,
+  fetchPokemonDetails,
+  fetchPokemonByName,
+  fetchPokemonById,
+} from '@/app/api/pokemon';
 import type { PokemonListResponse, PokemonDetails } from '@/types/pokemon';
 
 const PAGE_SIZE = 20;
@@ -84,6 +89,14 @@ export const usePokemonDetails = (url: string) => {
   return useQuery<PokemonDetails, Error>({
     queryKey: ['pokemon', 'details', pokemonId],
     queryFn: () => fetchPokemonDetails(url),
+    ...DETAILS_CACHE_TIME,
+  });
+};
+
+export const usePokemonDetailsById = (pokemonId: number) => {
+  return useQuery<PokemonDetails, Error>({
+    queryKey: ['pokemon', 'details', pokemonId],
+    queryFn: () => fetchPokemonById(pokemonId),
     ...DETAILS_CACHE_TIME,
   });
 };

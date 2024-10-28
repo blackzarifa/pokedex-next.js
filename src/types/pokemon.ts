@@ -14,15 +14,35 @@ export interface PokemonListResponse {
 export interface PokemonDetails {
   id: number;
   name: string;
+  weight: number;
+  height: number;
   cries: {
     latest: string;
     legacy: string;
   };
+  abilities: PokemonAbility[];
+  sprites: PokemonSprites;
+  stats: PokemonStat[];
   types: {
     slot: number;
     type: PokemonType;
   }[];
-  sprites: PokemonSprites;
+}
+
+interface PokemonAbility {
+  ability: {
+    name: string;
+    url: string;
+  };
+}
+
+interface PokemonStat {
+  base_stat: number;
+  effort: number;
+  stat: {
+    name: string;
+    url: string;
+  };
 }
 
 interface PokemonType {
