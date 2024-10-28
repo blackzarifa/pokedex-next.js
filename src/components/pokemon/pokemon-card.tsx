@@ -5,17 +5,23 @@ import { TYPE_COLORS } from '@/lib/constants';
 import { PokemonTypeName } from '@/types/pokemon';
 import PokemonTypeBadge from '@/components/pokemon/pokemon-type-badge';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function PokemonCard({ pokemon }: { pokemon: PokemonDetails }) {
+  const [isImageAnimating, setIsImageAnimating] = useState(false);
+
   const mainType = pokemon.types[0].type.name as PokemonTypeName;
   const hoverShadow = `hover:shadow-${TYPE_COLORS[mainType]}/20`;
 
+  const triggerImageAnimation = () => {
+    setIsImageAnimating(true);
+    setTimeout(() => setIsImageAnimating(false), 600);
+  };
+
   return (
     <Card
-      className={cn(
-        'hover:shadow-lg transition-shadow hover:scale-105 transition-transform',
-        hoverShadow
-      )}
+      className={cn('hover:shadow-lg hover:scale-105 transition-all', hoverShadow)}
+      onMouseEnter={() => triggerImageAnimation()}
     >
       <div className="grid grid-row-1 grid-cols-3 gap-2 h-full">
         <div className="col-span-1 flex content-center justify-center p-2">
@@ -26,15 +32,21 @@ export default function PokemonCard({ pokemon }: { pokemon: PokemonDetails }) {
               fill
               sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 20vw"
               priority={true}
-              className="object-contain p-3"
+              className={cn(
+                'object-contain p-3 transition-transform',
+                isImageAnimating && 'scale-up-down'
+              )}
+              onMouseEnter={triggerImageAnimation}
             />
           </div>
         </div>
 
         <div className="col-span-2">
           <CardHeader className="pl-2 pb-4">
+            <CardDescription className="font-mono">
+              #{pokemon.id.toString().padStart(3, '0')}
+            </CardDescription>
             <CardTitle className="capitalize">{pokemon.name}</CardTitle>
-            <CardDescription>#{pokemon.id.toString().padStart(3, '0')}</CardDescription>
           </CardHeader>
 
           <CardContent className="pl-2">

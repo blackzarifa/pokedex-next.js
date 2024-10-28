@@ -95,3 +95,17 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes scale-up-down {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.scale-up-down {
+  animation: scale-up-down 0.6s ease-in-out;
+}
