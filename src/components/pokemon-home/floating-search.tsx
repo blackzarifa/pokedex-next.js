@@ -8,7 +8,7 @@ export default function FloatingSearch({ onClick }: { onClick: () => void }) {
 
   return (
     <Button
-      className="fixed bottom-4 md:top-44 right-4 rounded-2xl h-14 w-14 shadow-lg"
+      className="md:hidden fixed bottom-4 right-4 rounded-2xl h-14 w-14 shadow-lg"
       onClick={onClick}
     >
       <Search />
