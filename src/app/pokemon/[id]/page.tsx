@@ -6,7 +6,7 @@ import { ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import PokemonSprites from '@/components/pokemon-details/pokemon-sprites';
+import PokemonSpritesLoader from '@/components/pokemon-details/pokemon-sprites-loader';
 import PokemonStats from '@/components/pokemon-details/pokemon-stats';
 import PokemonDetails from '@/components/pokemon-details/pokemon-details';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -47,15 +47,15 @@ export default function PokemonPage({ params }: PokemonPageProps) {
             <Skeleton className="h-10 w-72" />
           ) : (
             <>
-              <span className="font-mono">#{String(pokemon.id).padStart(3, '0')}</span>
-              &nbsp;- {pokemon.name}
+              <span className="font-mono">#{String(pokemon?.id).padStart(3, '0')}</span>
+              &nbsp;- {pokemon?.name}
             </>
           )}
         </h1>
       </div>
 
       <div className="container grid grid-cols-1 gap-6 md:grid-cols-2">
-        {isLoading ? <Skeleton className="h-96 w-full" /> : <PokemonSprites pokemon={pokemon} />}
+        <PokemonSpritesLoader pokemon={pokemon} isLoading={isLoading} />
 
         <div className="space-y-6">
           <PokemonStats stats={pokemon?.stats || null} isLoading={isLoading} />
