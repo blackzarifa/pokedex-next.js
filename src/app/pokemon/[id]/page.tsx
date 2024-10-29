@@ -11,6 +11,8 @@ import PokemonStats from '@/components/pokemon-details/pokemon-stats';
 import PokemonDetails from '@/components/pokemon-details/pokemon-details';
 import { Skeleton } from '@/components/ui/skeleton';
 import { usePathname } from 'next/navigation';
+import { PokemonTypeName } from '@/types/pokemon';
+import { TYPE_COLORS } from '@/lib/constants';
 
 interface PokemonPageProps {
   params: {
@@ -25,6 +27,9 @@ export default function PokemonPage({ params }: PokemonPageProps) {
 
   const t = useTranslations('Fetch');
   const { data: pokemon, isLoading, error } = usePokemonDetailsById(pokemonId);
+
+  const primaryType = pokemon?.types?.[0]?.type?.name as PokemonTypeName;
+  const gradientColor = primaryType ? TYPE_COLORS[primaryType] : 'gray-400';
 
   if (!isLoading && (error || !pokemon)) {
     return (
@@ -57,7 +62,11 @@ export default function PokemonPage({ params }: PokemonPageProps) {
       </div>
 
       <div className="container grid grid-cols-1 gap-6 md:grid-cols-2">
-        <PokemonSpritesLoader pokemon={pokemon} isLoading={isLoading} />
+        <PokemonSpritesLoader
+          pokemon={pokemon}
+          isLoading={isLoading}
+          gradientColor={gradientColor}
+        />
 
         <div className="space-y-6">
           <PokemonStats stats={pokemon?.stats || null} isLoading={isLoading} />

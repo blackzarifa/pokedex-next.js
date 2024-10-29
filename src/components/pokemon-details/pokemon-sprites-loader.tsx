@@ -6,9 +6,14 @@ import { PokemonDetails } from '@/types/pokemon';
 interface PokemonSpritesLoaderProps {
   pokemon: PokemonDetails | undefined;
   isLoading: boolean;
+  gradientColor: string;
 }
 
-export default function PokemonSpritesLoader({ pokemon, isLoading }: PokemonSpritesLoaderProps) {
+export default function PokemonSpritesLoader({
+  pokemon,
+  isLoading,
+  gradientColor,
+}: PokemonSpritesLoaderProps) {
   if (isLoading || !pokemon) {
     return (
       <Card className="w-full h-full">
@@ -31,5 +36,5 @@ export default function PokemonSpritesLoader({ pokemon, isLoading }: PokemonSpri
     );
   }
 
-  return <PokemonSprites pokemon={pokemon} />;
+  return <PokemonSprites pokemon={pokemon} gradientColor={gradientColor} />;
 }

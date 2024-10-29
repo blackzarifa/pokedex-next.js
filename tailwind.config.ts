@@ -62,6 +62,7 @@ const config: Config = {
   },
   plugins: [require('tailwindcss-animate')],
   safelist: [
+    { pattern: new RegExp(`${colors}`) },
     { pattern: new RegExp(`bg-${colors}-\\d{3}`) },
     { pattern: new RegExp(`shadow-${colors}-\\d{3}`), variants: ['hover'] },
   ],
