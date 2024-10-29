@@ -10,6 +10,7 @@ import PokemonSpritesLoader from '@/components/pokemon-details/pokemon-sprites-l
 import PokemonStats from '@/components/pokemon-details/pokemon-stats';
 import PokemonDetails from '@/components/pokemon-details/pokemon-details';
 import { Skeleton } from '@/components/ui/skeleton';
+import { usePathname } from 'next/navigation';
 
 interface PokemonPageProps {
   params: {
@@ -18,7 +19,8 @@ interface PokemonPageProps {
 }
 
 export default function PokemonPage({ params }: PokemonPageProps) {
-  const pokemonId = parseInt(params.id);
+  const pathName = usePathname();
+  const pokemonId = params.id ? parseInt(params.id) : parseInt(pathName.split('/').pop() || '');
   if (isNaN(pokemonId)) notFound();
 
   const t = useTranslations('Fetch');
