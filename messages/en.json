@@ -26,5 +26,15 @@
     "loadMore": "Load more",
     "loadingMore": "Loading more...",
     "noMoreToLoad": "No more to load."
+  },
+  "Sprites": {
+    "official-artwork": "Official Artwork",
+    "front-view": "Front View",
+    "back-view": "Back View",
+    "default": "Default",
+    "female:": "Female",
+    "shiny": "Shiny",
+    "shiny-female": "Shiny - Female",
+    "select-placeholder": "Select sprite"
   }
 }

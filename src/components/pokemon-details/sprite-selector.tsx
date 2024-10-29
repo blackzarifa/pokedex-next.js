@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { SpriteOption } from '@/types/sprites';
+import { useTranslations } from 'next-intl';
 
 interface SpriteSelectorProps {
   availableGroups: [string, SpriteOption[]][];
@@ -15,11 +16,13 @@ interface SpriteSelectorProps {
 }
 
 export default function SpriteSelector({ availableGroups, onSpriteChange }: SpriteSelectorProps) {
+  const t = useTranslations('Sprites');
+
   return (
     <div className="w-full max-w-xs mx-auto">
       <Select defaultValue="official-default" onValueChange={onSpriteChange}>
         <SelectTrigger>
-          <SelectValue placeholder="Select sprite version" />
+          <SelectValue placeholder={t('select-placeholder')} />
         </SelectTrigger>
         <SelectContent>
           {availableGroups.map(([groupName, options]) => (

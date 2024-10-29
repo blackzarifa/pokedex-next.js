@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { PokemonDetails } from '@/types/pokemon';
 import { SpriteGroups } from '@/types/sprites';
+import { useTranslations } from 'next-intl';
 
 export const usePokemonSprites = (pokemon: PokemonDetails) => {
+  const t = useTranslations('Sprites');
   const [selectedSprite, setSelectedSprite] = useState<string>(
     pokemon.sprites.other['official-artwork'].front_default
   );
@@ -11,59 +13,59 @@ export const usePokemonSprites = (pokemon: PokemonDetails) => {
     const sprites = pokemon.sprites;
 
     return {
-      'Official Artwork': [
+      [t('official-artwork')]: [
         {
           value: 'official-default',
-          label: 'Default',
+          label: t('default'),
           src: sprites.other['official-artwork'].front_default,
         },
         {
           value: 'official-shiny',
-          label: 'Shiny',
+          label: t('shiny'),
           src: sprites.other['official-artwork'].front_shiny,
         },
       ].filter((option) => option.src !== null),
-      'Front View': [
+      [t('front-view')]: [
         {
           value: 'front-default',
-          label: 'Default',
+          label: t('default'),
           src: sprites.front_default,
         },
         {
           value: 'front-shiny',
-          label: 'Shiny',
+          label: t('shiny'),
           src: sprites.front_shiny,
         },
         {
           value: 'front-female',
-          label: 'Female',
+          label: t('female'),
           src: sprites.front_female,
         },
         {
           value: 'front-shiny-female',
-          label: 'Shiny Female',
+          label: t('shiny-female'),
           src: sprites.front_shiny_female,
         },
       ].filter((option) => option.src !== null),
-      'Back View': [
+      [t('back-view')]: [
         {
           value: 'back-default',
-          label: 'Default',
+          label: t('default'),
           src: sprites.back_default,
         },
         {
           value: 'back-shiny',
-          label: 'Shiny',
+          label: t('shiny'),
           src: sprites.back_shiny,
         },
         {
           value: 'back-female',
-          label: 'Female',
+          label: t('female'),
           src: sprites.back_female,
         },
         {
           value: 'back-shiny-female',
-          label: 'Shiny Female',
+          label: t('shiny-female'),
           src: sprites.back_shiny_female,
         },
       ].filter((option) => option.src !== null),
