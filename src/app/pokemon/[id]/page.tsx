@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import PokemonDetailCard from '@/components/pokemon-details/pokemon-detail-card';
+import PokemonStats from '@/components/pokemon-details/pokemon-stats';
 import { Skeleton } from '@/components/ui/skeleton';
 
 interface PokemonPageProps {
@@ -57,29 +58,7 @@ export default function PokemonPage({ params }: PokemonPageProps) {
         {isLoading ? <Skeleton className="h-96 w-full" /> : <PokemonDetailCard pokemon={pokemon} />}
 
         <div className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>{isLoading ? <Skeleton className="h-6 w-32" /> : 'Base Stats'}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {isLoading ? (
-                <div className="space-y-2">
-                  {[...Array(6)].map((_, i) => (
-                    <Skeleton key={i} className="h-4 w-full" />
-                  ))}
-                </div>
-              ) : (
-                pokemon.stats.map((stat) => (
-                  <div key={stat.stat.name} className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="capitalize">{stat.stat.name}</span>
-                      <span>{stat.base_stat}</span>
-                    </div>
-                  </div>
-                ))
-              )}
-            </CardContent>
-          </Card>
+          <PokemonStats stats={pokemon?.stats || null} isLoading={isLoading} />
 
           <Card>
             <CardHeader>
