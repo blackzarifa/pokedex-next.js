@@ -9,6 +9,7 @@ import Link from 'next/link';
 import PokemonSpritesLoader from '@/components/pokemon-details/pokemon-sprites-loader';
 import PokemonStats from '@/components/pokemon-details/pokemon-stats';
 import PokemonDetails from '@/components/pokemon-details/pokemon-details';
+import StatsColumn from '@/components/pokemon-details/stats-column';
 import { Skeleton } from '@/components/ui/skeleton';
 import { usePathname } from 'next/navigation';
 import { PokemonTypeName } from '@/types/pokemon';
@@ -68,16 +69,15 @@ export default function PokemonPage({ params }: PokemonPageProps) {
           gradientColor={gradientColor}
         />
 
-        <div className="space-y-6">
+        <StatsColumn typeColor={gradientColor}>
           <PokemonStats stats={pokemon?.stats || null} isLoading={isLoading} />
-
           <PokemonDetails
             height={pokemon?.height || null}
             weight={pokemon?.weight || null}
             abilities={pokemon?.abilities || null}
             isLoading={isLoading}
           />
-        </div>
+        </StatsColumn>
       </div>
     </div>
   );
