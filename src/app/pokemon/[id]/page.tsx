@@ -1,7 +1,6 @@
 'use client';
 
 import { usePokemonDetailsById } from '@/lib/hooks/use-pokemon-queries';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -9,6 +8,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import PokemonSprites from '@/components/pokemon-details/pokemon-sprites';
 import PokemonStats from '@/components/pokemon-details/pokemon-stats';
+import PokemonDetails from '@/components/pokemon-details/pokemon-details';
 import { Skeleton } from '@/components/ui/skeleton';
 
 interface PokemonPageProps {
@@ -60,44 +60,12 @@ export default function PokemonPage({ params }: PokemonPageProps) {
         <div className="space-y-6">
           <PokemonStats stats={pokemon?.stats || null} isLoading={isLoading} />
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{isLoading ? <Skeleton className="h-6 w-32" /> : 'Details'}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {isLoading ? (
-                <>
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-full" />
-                </>
-              ) : (
-                <>
-                  <div>
-                    <h3 className="font-semibold">Height</h3>
-                    <p>{(pokemon.height / 10).toFixed(1)}m</p>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Weight</h3>
-                    <p>{(pokemon.weight / 10).toFixed(1)}kg</p>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Abilities</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {pokemon.abilities.map((ability) => (
-                        <span
-                          key={ability.ability.name}
-                          className="px-3 py-1 bg-gray-100 rounded-full text-sm capitalize"
-                        >
-                          {ability.ability.name.replace('-', ' ')}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              )}
-            </CardContent>
-          </Card>
+          <PokemonDetails
+            height={pokemon?.height || null}
+            weight={pokemon?.weight || null}
+            abilities={pokemon?.abilities || null}
+            isLoading={isLoading}
+          />
         </div>
       </div>
     </div>
