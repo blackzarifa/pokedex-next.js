@@ -15,7 +15,7 @@ type ProvidersProps = {
 const Providers = ({ children, locale, messages }: ProvidersProps) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <NextIntlClientProvider locale={locale} messages={messages}>
+      <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
