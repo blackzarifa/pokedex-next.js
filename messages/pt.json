@@ -36,5 +36,14 @@
     "shiny": "Shiny",
     "shiny-female": "Shiny - Fêmea",
     "select-placeholder": "Selecionar sprite"
+  },
+  "Stats": {
+    "base-stats": "Estatísticas Base",
+    "total": "Total",
+    "attack": "Ataque",
+    "defense": "Defesa",
+    "sp-atk": "Atk. Esp.",
+    "sp-def": "Def. Esp.",
+    "speed": "Velocidade"
   }
 }
