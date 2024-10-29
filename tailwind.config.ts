@@ -1,6 +1,8 @@
 import type { Config } from 'tailwindcss';
 
+const shades = '(500)';
 const colors = '(gray|red|blue|yellow|green|purple|pink|lime|indigo|black|white)';
+const gradientDirections = '(to-r|to-b|to-t|to-l)';
 
 const config: Config = {
   darkMode: ['class'],
@@ -62,9 +64,10 @@ const config: Config = {
   },
   plugins: [require('tailwindcss-animate')],
   safelist: [
-    { pattern: new RegExp(`${colors}`) },
-    { pattern: new RegExp(`bg-${colors}-\\d{3}`) },
-    { pattern: new RegExp(`shadow-${colors}-\\d{3}`), variants: ['hover'] },
+    { pattern: new RegExp(`^bg-${colors}-${shades}`) },
+    { pattern: new RegExp(`^shadow-${colors}-${shades}`), variants: ['hover'] },
+    { pattern: new RegExp(`^(from|to)-${colors}-${shades}`) },
+    { pattern: new RegExp(`^bg-gradient-${gradientDirections}`) },
   ],
 };
 export default config;
