@@ -73,12 +73,10 @@ export const usePokemonSprites = (pokemon: PokemonDetails) => {
   };
 
   const spriteOptions = createSpriteOptions();
-  const availableGroups = Object.entries(spriteOptions).filter(
-    ([_, options]) => options.length > 0
-  );
+  const availableGroups = Object.entries(spriteOptions).filter(([, options]) => options.length > 0);
 
   const handleSpriteChange = (value: string) => {
-    for (const [_, options] of Object.entries(spriteOptions)) {
+    for (const [, options] of Object.entries(spriteOptions)) {
       const option = options.find((opt) => opt.value === value);
       if (option?.src) {
         setSelectedSprite(option.src);

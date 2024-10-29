@@ -12,7 +12,9 @@ interface PokemonDetailsCardProps {
   isLoading: boolean;
 }
 
-const getWeightCategory = (weight: number, t: any) => {
+type TranslateFunction = (key: string) => string;
+
+const getWeightCategory = (weight: number, t: TranslateFunction) => {
   const kg = weight / 10;
   if (kg < 10) return t('weightCategory.featherweight');
   if (kg < 25) return t('weightCategory.lightweight');
@@ -21,7 +23,7 @@ const getWeightCategory = (weight: number, t: any) => {
   return t('weightCategory.superHeavyweight');
 };
 
-const getHeightCategory = (height: number, t: any) => {
+const getHeightCategory = (height: number, t: TranslateFunction) => {
   const meters = height / 10;
   if (meters < 0.5) return t('heightCategory.tiny');
   if (meters < 1.0) return t('heightCategory.small');

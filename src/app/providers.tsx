@@ -5,11 +5,12 @@ import { queryClient } from '@/lib/react-query/queryClient';
 import { NextIntlClientProvider } from 'next-intl';
 import { ThemeProvider } from '@/components/theme-provider';
 import { VolumeProvider } from '@/context/volume-context';
+import { AbstractIntlMessages } from 'next-intl';
 
 type ProvidersProps = {
   children: React.ReactNode;
   locale: string;
-  messages: Record<string, any>;
+  messages: AbstractIntlMessages;
 };
 
 const Providers = ({ children, locale, messages }: ProvidersProps) => {

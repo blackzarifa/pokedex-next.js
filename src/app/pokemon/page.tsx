@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '@/lib/react-query/queryClient';
 import PokedexSearch from '@/components/pokemon-home/pokedex-search';
 import FloatingSearch from '@/components/pokemon-home/floating-search';
 import PokemonList from '@/components/pokemon-home/pokemon-list';
