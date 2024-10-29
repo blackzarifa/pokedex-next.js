@@ -62,7 +62,7 @@ export default function PokemonPage({ params }: PokemonPageProps) {
         </h1>
       </div>
 
-      <div className="container grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="container grid grid-cols-1 gap-6 md:grid-cols-2 pb-12">
         <PokemonSpritesLoader
           pokemon={pokemon}
           isLoading={isLoading}

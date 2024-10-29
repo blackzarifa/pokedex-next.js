@@ -10,9 +10,7 @@ export default function StatsColumn({
 }) {
   return (
     <div className="relative">
-      <div
-        className={`absolute inset-0 opacity-5 blur-3xl -z-10 rounded-xl bg-gradient-to-br from-${typeColor} pointer-events-none`}
-      />
+      <div className={`absolute inset-0 opacity-5 blur-3xl -z-10 rounded-xl pointer-events-none`} />
       <div className="space-y-6">
         {React.Children.map(children, (child) => (
           <div className="group relative transform transition-all duration-300 hover:scale-[1.02]">

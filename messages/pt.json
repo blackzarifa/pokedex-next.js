@@ -45,5 +45,25 @@
     "sp-atk": "Atk. Esp.",
     "sp-def": "Def. Esp.",
     "speed": "Velocidade"
+  },
+  "Details": {
+    "title": "Detalhes do Pokémon",
+    "height": "Altura",
+    "weight": "Peso",
+    "abilities": "Habilidades",
+    "heightCategory": {
+      "tiny": "Minúsculo",
+      "small": "Pequeno",
+      "medium": "Médio",
+      "large": "Grande",
+      "gigantic": "Gigantesco"
+    },
+    "weightCategory": {
+      "featherweight": "Peso Pena",
+      "lightweight": "Peso Leve",
+      "middleweight": "Peso Médio",
+      "heavyweight": "Peso Pesado",
+      "superHeavyweight": "Super Pesado"
+    }
   }
 }

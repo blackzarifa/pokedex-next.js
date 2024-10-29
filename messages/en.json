@@ -45,5 +45,25 @@
     "sp-atk": "Sp. Atk",
     "sp-def": "Sp. Def",
     "speed": "Speed"
+  },
+  "Details": {
+    "title": "Pokémon Details",
+    "height": "Height",
+    "weight": "Weight",
+    "abilities": "Abilities",
+    "heightCategory": {
+      "tiny": "Tiny",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large",
+      "gigantic": "Gigantic"
+    },
+    "weightCategory": {
+      "featherweight": "Featherweight",
+      "lightweight": "Lightweight",
+      "middleweight": "Middleweight",
+      "heavyweight": "Heavyweight",
+      "superHeavyweight": "Super Heavyweight"
+    }
   }
 }

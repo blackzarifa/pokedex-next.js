@@ -29,7 +29,7 @@ export interface PokemonDetails {
   }[];
 }
 
-interface PokemonAbility {
+export interface PokemonAbility {
   ability: {
     name: string;
     url: string;
