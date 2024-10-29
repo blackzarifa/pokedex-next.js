@@ -6,11 +6,11 @@ import SpriteSelector from '@/components/pokemon-details/sprite-selector';
 import { usePokemonSprites } from '@/lib/hooks/use-pokemon-sprites';
 import { PokemonDetails } from '@/types/pokemon';
 
-interface PokemonDetailCardProps {
+interface PokemonSpritesProps {
   pokemon: PokemonDetails;
 }
 
-export default function PokemonDetailCard({ pokemon }: PokemonDetailCardProps) {
+export default function PokemonSprites({ pokemon }: PokemonSpritesProps) {
   const { selectedSprite, availableGroups, handleSpriteChange } = usePokemonSprites(pokemon);
 
   return (
