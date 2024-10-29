@@ -1,15 +1,15 @@
 import type { Config } from 'tailwindcss';
 
-const shades = '(500)';
-const colors = '(gray|red|blue|yellow|green|purple|pink|lime|indigo|black|white)';
+const shades = '(200|300|400|500|600|700|800)';
+const colors = '(gray|red|blue|yellow|green|purple|pink|lime|indigo)';
 const gradientDirections = '(to-r|to-b|to-t|to-l)';
 
 const config: Config = {
   darkMode: ['class'],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/**/*.{js,ts,tsx}',
+    './src/components/**/*.{js,ts,tsx}',
+    './src/app/**/*.{js,ts,tsx}',
   ],
   theme: {
     extend: {
