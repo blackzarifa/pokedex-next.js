@@ -5,8 +5,8 @@
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/blackzarifa/pokedex-next.js.git]
-cd [pokedex-next.js]
+git clone https://github.com/blackzarifa/pokedex-next.js.git
+cd pokedex-next.js
 ```
 
 2. Install dependencies:
