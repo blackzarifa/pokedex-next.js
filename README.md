@@ -51,6 +51,3 @@ yarn dev
 - [Tailwind CSS](https://tailwindcss.com/)
 - [PokeAPI](https://pokeapi.co/)
 
-# License
-
-[MIT](https://choosealicense.com/licenses/mit/)
